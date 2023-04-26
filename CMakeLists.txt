@@ -9,10 +9,12 @@ if(WIN32)
 	set(CMAKE_CXX_FLAGS_RELEASE "/MT")
 endif()
 
+include_directories(struct)
+
 set(SOURCE_FILES
 CoffPacker.cpp
-struct_endian.c
-struct.c
+struct/struct_endian.c
+struct/struct.c
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})

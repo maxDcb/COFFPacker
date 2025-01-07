@@ -18,7 +18,9 @@ struct/struct.c
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
+set_property(TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 target_include_directories(${PROJECT_NAME} PUBLIC ./)
 
 add_executable(testsCoffPacker testsCoffPacker.cpp)
+set_property(TARGET testsCoffPacker PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 target_link_libraries(testsCoffPacker CoffPacker)

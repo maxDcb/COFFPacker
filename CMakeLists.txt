@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(CoffPacker VERSION 1.0.0 LANGUAGES CXX)
+project(CoffPacker VERSION 1.0.0 LANGUAGES C CXX)
 
 set(DEFAULT_BUILD_TYPE "Release")
 #set(CMAKE_C_STANDARD 17)

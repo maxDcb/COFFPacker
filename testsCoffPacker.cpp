@@ -1,18 +1,7 @@
-
 #include <string>
 #include <iostream>
-#include <fstream>
-#include <memory>
-#include <chrono>
-#include <random>
-#include <vector>
-#include <thread>
-
 
 #include "CoffPacker.hpp"
-
-using namespace std;
-
 
 int main()
 {
@@ -59,7 +48,6 @@ int main()
     out.clear();
     coffPacker.process(arg, format, out);
     std::cout << out << std::endl;
-   
 
-	return 0;
+    return 0;
 }

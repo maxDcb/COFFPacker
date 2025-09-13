@@ -79,7 +79,7 @@ int CoffPacker::process(const std::string& input, const std::string& format, std
     ByteBuffer finalBuffer;
     {
         ByteBuffer buffer;
-        int len = struct_pack(m_buf.data(), "<L", m_data.size());
+        int len = struct_pack((void*)m_buf.data(), "<L", m_data.size());
         for(int i=0; i<len; i++)
             buffer.push_back(m_buf[i]);
 
@@ -103,12 +103,12 @@ int CoffPacker::addWString(const std::string& input)
     std::snprintf(fmt, sizeof(fmt), "<%ds", static_cast<int>(input.size()) * 2 + 2);
 
     ByteBuffer buffer;
-    int len = struct_pack(m_buf.data(), fmt, arg.data());
+    int len = struct_pack((void*)m_buf.data(), fmt, arg.data());
     for(int i=0; i<len; i++)
         buffer.push_back(m_buf[i]);
 
     ByteBuffer bufferSize;
-    len = struct_pack(m_buf.data(), "<L", buffer.size());
+    len = struct_pack((void*)m_buf.data(), "<L", buffer.size());
     for(int i=0; i<len; i++)
         bufferSize.push_back(m_buf[i]);
 
@@ -128,12 +128,12 @@ int CoffPacker::addString(const std::string& input)
     std::snprintf(fmt, sizeof(fmt), "<%ds", static_cast<int>(input.size()) + 1);
 
     ByteBuffer buffer;
-    int len = struct_pack(m_buf.data(), fmt, arg.data());
+    int len = struct_pack((void*)m_buf.data(), fmt, arg.data());
     for(int i=0; i<len; i++)
         buffer.push_back(m_buf[i]);
 
     ByteBuffer bufferSize;
-    len = struct_pack(m_buf.data(), "<L", buffer.size());
+    len = struct_pack((void*)m_buf.data(), "<L", buffer.size());
     for(int i=0; i<len; i++)
         bufferSize.push_back(m_buf[i]);
 
@@ -158,7 +158,7 @@ int CoffPacker::addShort(const std::string& input)
     }
 
     ByteBuffer buffer;
-    int len = struct_pack(m_buf.data(), "<h", val);
+    int len = struct_pack((void*)m_buf.data(), "<h", val);
     for(int i=0; i<len; i++)
         buffer.push_back(m_buf[i]);
 
@@ -182,7 +182,7 @@ int CoffPacker::addInt(const std::string& input)
     }
 
     ByteBuffer buffer;
-    int len = struct_pack(m_buf.data(), "<i", val);
+    int len = struct_pack((void*)m_buf.data(), "<i", val);
     for(int i=0; i<len; i++)
         buffer.push_back(m_buf[i]);
 

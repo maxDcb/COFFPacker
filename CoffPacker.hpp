@@ -1,17 +1,10 @@
 #pragma once
 
 #include <string>
-#include <iostream>
-#include <fstream>
-#include <memory>
-#include <chrono>
-#include <random>
 #include <vector>
-#include <thread>
+#include <cstdint>
 
-
-typedef unsigned char uint8_t;
-typedef std::vector<uint8_t> ByteBuffer;
+using ByteBuffer = std::vector<std::uint8_t>;
 
 
 class CoffPacker
